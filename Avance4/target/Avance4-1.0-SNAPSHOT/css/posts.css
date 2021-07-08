@@ -1,0 +1,206 @@
+:root {
+  --tamanio_publicarPC: 15vw;
+  --tamanio_publicarRe: 23vw;
+}
+
+body {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#main {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.buttons {
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  width: var(--tamanio_publicarPC);
+  border-radius: 12px;
+  color: white;
+}
+
+#publicar-btn {
+  background-color: #198754;
+  text-align: center;
+  position: relative;
+  right: 5vw;
+  font-size: 1.6rem;
+  padding: 12px;
+}
+
+#cerrar-sesion-btn {
+  background-color: brown;
+  position: absolute;
+  right: 5vw;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 10px;
+}
+
+#publicar-btn:hover {
+  background-color: #207754;
+}
+
+#cerrar-sesion-btn:hover {
+  background-color: #b52a2a;
+}
+
+#datos {
+  margin-top: 5vh;
+  text-align: center;
+}
+
+#datos p {
+  color: aliceblue;
+  font-size: 1.3rem;
+  display: inline;
+  position: absolute;
+  left: 15vw;
+}
+
+#userImg {
+  float: left;
+  display: inline;
+  top: 3vh;
+}
+
+#posts {
+  width: 60vw;
+  height: 80vh;
+  border-radius: 4px;
+  margin: auto;
+  background-color: azure;
+  margin-top: 5vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  box-shadow: 0px 5px 20px black;
+  border-radius: 20px;
+}
+.post {
+  margin: auto;
+  margin-left: 5vw;
+  margin-right: 3vw;
+  width: 50vw;
+  height: auto;
+  background-color:wheat;
+  border-radius:5px;
+  margin-bottom: 2vh;
+  padding-top: 1vh;
+  padding-left: 1vh;
+  padding-bottom: 1vh;
+}
+
+.usuario {
+  display: inline;
+}
+.fecha-post {
+  display: inline;
+  margin-left: 5vw;
+}
+
+.editar {
+  margin-left: 23vw;
+  border: none;
+  background-color: darkblue;
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.editar:hover {
+  background-color: #50138b;
+}
+#posts header h2 {
+  text-align: center;
+}
+
+.comentar {
+  border: none;
+  background-color: darkblue;
+  color: white;
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 1vw;
+  position: relative;
+  bottom: 2vh;
+}
+
+.comentar:hover {
+  background-color: #50138b;
+}
+
+.comentarios{
+  margin-left: 3vh;
+  
+}
+
+.comentarios div {
+  padding-top: 1vh;
+  background-color:antiquewhite;
+  border: solid 1px black;  
+  margin-bottom: 1vh;
+  border-radius: 7px;
+  width: 42.3vw;
+}
+
+.comentarios div p {
+
+  margin-left: 3vh;  
+  margin-right: 3vh;  
+}
+
+.comentarios textarea {
+  width: 42vw;
+}
+.comentario {
+  resize: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+  #datos input[type="button"] {
+    width: var(--tamanio_publicarRe);
+    padding: 15px;
+  }
+  #userImg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .editar {
+    margin-left: 10vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .editar {
+    margin-left: 3vw;
+  }
+}
+@media screen and (max-width: 1505px) {
+  .comentar {
+    margin-top: 3vh;
+  }
+}
+ 

@@ -1,0 +1,99 @@
+body {
+ background: #0f2027; /* fallback for old browsers */
+ background: -webkit-linear-gradient(
+   to right,
+   #2c5364,
+   #203a43,
+   #0f2027
+ ); /* Chrome 10-25, Safari 5.1-6 */
+ background: linear-gradient(
+   to right,
+   #2c5364,
+   #203a43,
+   #0f2027
+ ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.buttons {
+ border: none;
+ font-weight: bold;
+ cursor: pointer;
+ width: var(--tamanio_publicarPC);
+ border-radius: 12px;
+ color: white;
+ margin-top: 1vh;
+ margin-bottom: 1vh;
+}
+
+#publicar-btn {
+ background-color: #198754;
+ text-align: center;
+ font-size: 1.2rem;
+ padding: 12px;
+ margin-right: 3vw;
+}
+
+#cancelar-btn {
+ background-color: brown;
+ text-align: center;
+ font-size: 1rem;
+ padding: 8px;
+}
+
+#publicar-btn:hover {
+ background-color: #207754;
+}
+
+#cancelar-btn:hover {
+ background-color: #b52a2a;
+}
+
+#posts {
+ width: 60vw;
+ height: 90vh;
+ border-radius: 4px;
+ margin: auto;
+ background-color: azure;
+ margin-top: 5vh;
+ overflow-x: hidden;
+ box-shadow: 0px 5px 20px black;
+ border-radius: 20px;
+}
+
+.post {
+ margin: auto;
+ margin-left: 5vw;
+ margin-right: 3vw;
+ width: 50vw;
+ height: auto;
+ background-color:wheat;
+ border-radius:5px;
+ margin-bottom: 2vh;
+ padding-top: 1vh;
+ padding-left: 1vh;
+}
+
+.publicacion {
+ width: 49vw;
+ resize: none;
+ font-size: 1.5rem;
+}
+
+#anclado{
+ display: inline-block;
+ transform: scale(2);
+ margin-right: 0.5vw;
+}
+
+#lblAnclado{
+ display: inline-block;
+ margin-right:18vw;
+ font-size: 1.3rem;
+}
+
+#posts header h1{
+ text-align: center;
+ font-size: 2rem;
+}

@@ -1,0 +1,10 @@
+.eliminar{
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    left: 15vw;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css\indexstyles.css">
+        <title>Inicio de sesión</title>
+    </head>
+
+    <body>
+        <main>
+            <div class="contenedor">
+
+                <header>
+                    <h1>Blog Aplicaciones Web</h1>
+                </header>
+
+                <figure>
+                    <img src="images\img_index.png" alt="inicio_sesion" width="250" height="250">
+                </figure>
+
+                <section>
+                    <hgroup>
+                        <h3>Proyecto del curso de aplicaciones web</h3>
+                        <h4>Luis Alejandro Gonzalez Bautista - 00000208249</h4>
+                        <h4>Jesus Alfonso Arce Sempoalt - 00000189029</h4>
+                        <h4>Bryan Isaac Segoviano Ruiz - 00000186203</h4>
+                    </hgroup>
+                    
+                    <hr>
+                    <div class="datosInicio">
+                        <form action="IniciarSesion" method="POST">
+                            <label><b>Usuario:</b></label>
+                            <input class="cajaTexto" type="text" name="txtcorreo" placeholder="Introduzca su correo electronico" id="as" required>
+                            <label><b>Contraseña:</b></label>
+                            <input class="cajaTexto" type="password" name="txtpassword" placeholder="Introduzca su contraseña" required>
+                            <input type="submit" class="botonIngresar" value="Ingresar"/>
+                        </form>
+                    </div>
+                    <a href="crear_cuenta.html"><input type="button" class="botonCrear" value="Crear nueva cuenta"></a>
+                </section>
+            </div>
+        </main>
+        <script src="js/prueba.js" type="text/javascript"></script>
+    </body>
+
+</html>

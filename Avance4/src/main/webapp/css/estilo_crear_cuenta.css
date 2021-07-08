@@ -1,0 +1,107 @@
+ *{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1ch;
+    text-align: center;
+}
+
+label{
+    font-size: 1.4rem;
+}
+
+h1{
+    color: white;
+}
+
+#mensaje1{
+    color: white;
+}
+
+body{
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); 
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); 
+}
+
+form{
+    box-shadow: 0px 5px 20px black;
+    border-radius: 15px;
+    width: 50%;
+    border: 1px solid #ccc ;
+    margin:auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7294117647058823);
+}
+
+input{
+    font-size: 20px;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.048);
+}
+
+select{
+    font-size: 20px;
+}
+
+#registrarse{
+    margin: 9px;
+    padding: 10px 25px;
+    border: none;
+    color: white;
+    background-color: #198754;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+#cancelar{
+    margin: 9px;
+    padding: 6px 15px;
+    border: none;
+    color: white;
+    background-color: brown;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+select{
+    display: inline-block;
+    margin: auto;
+}
+
+
+.nombre{
+    display: block;
+    margin: auto;
+}
+
+.label_ubicacion{
+    display: block;
+}
+
+#registrarse:hover{
+    background-color: #0f7947;
+}
+
+#cancelar:hover{
+    background-color: rgb(145, 26, 26);
+}
+
+a{
+    text-decoration: none;
+}
+
+#registro_correo{
+   display: block;
+   margin: auto auto; 
+}

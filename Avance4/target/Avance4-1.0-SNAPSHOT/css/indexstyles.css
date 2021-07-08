@@ -1,0 +1,94 @@
+*{
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+ background: -webkit-linear-gradient(
+  to right,
+  #2c5364,
+  #203a43,
+  #0f2027
+); 
+background: linear-gradient(
+  to right,
+  #2c5364,
+  #203a43,
+  #0f2027
+);
+}
+
+h3,h4{
+ color: rgb(133, 132, 132);
+}
+
+hr{
+ margin-bottom: 5mm;
+}
+
+.contenedor{
+ background-color: rgba(255, 255, 255, 0.936);
+ border-radius: 20px;
+ border-color: white;
+ box-shadow: 0px 5px 20px black;
+ text-align: center;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 50px;
+ padding: 30px;
+ width: 50%;
+}
+
+.datosInicio{
+ text-align: justify;
+}
+
+.cajaTexto{
+width: 100%;
+font-size: 1rem;
+font-weight: 400;
+border-radius: .25rem;
+padding: .375rem;
+border: none;
+border-bottom: 2px solid black;
+background-color: rgba(255, 255, 255, 0.103);
+margin-bottom: 17px;
+}
+
+.botonIngresar{
+ margin: 9px;
+ padding: 10px 25px;
+ border: none;
+ color: white;
+ background-color: #198754;
+ font-size: 22px;
+ cursor: pointer;
+ border-radius: 12px;
+ display: inline-block;
+ margin-bottom: 13px;
+position: relative ;
+left: 41vh;
+}
+
+.botonCrear{
+ margin: 9px;
+ padding: 9px 15px;
+ border: none;
+ color: white;
+ background-color: #3566eb;
+ font-size: 17px;
+ cursor: pointer;
+ border-radius: 12px;
+ display: inline-block;
+}
+
+.botonIngresar:hover{
+ background-color: rgb(27, 112, 16);
+}
+
+.botonCrear:hover{
+ background-color: rgb(25, 72, 148);
+}
+
+a{
+  text-decoration: none;
+}
