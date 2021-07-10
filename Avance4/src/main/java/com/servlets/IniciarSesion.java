@@ -6,6 +6,7 @@ import controles.FabricaFachadaControl;
 import controles.IFachada;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +48,7 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("application/json;charset=UTF-8");
 
         StringBuilder sb = new StringBuilder();
@@ -59,11 +60,13 @@ public class IniciarSesion extends HttpServlet {
 
         String json = sb.toString();
         JsonObject usuarioJson = this.stringToJson(json);
-        
-        
-        System.out.println(usuarioJson.get("correo").toString().replace("\"", ""));
-        
 
+        System.out.println(usuarioJson.get("correo").toString().replace("\"", ""));
+
+        PrintWriter out = response.getWriter();
+        out.println(usuarioJson.toString());
+        out.flush();
+        
 
         /**
          * Gson gson = new Gson(); PrintWriter out = response.getWriter();
@@ -93,11 +96,11 @@ public class IniciarSesion extends HttpServlet {
          */
     }
 
-    private JsonObject stringToJson(String json) {   
+    private JsonObject stringToJson(String json) {
         JsonObject JUsuario = gson.fromJson(json, JsonObject.class);
         return JUsuario;
     }
-    
+
     /**
      * Returns a short description of the servlet.
      *

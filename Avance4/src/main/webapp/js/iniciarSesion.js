@@ -16,7 +16,8 @@ const iniciarSesion = async () => {
                 headers: {
                     'Content-Type': 'application/json; charset=UTF-8'
                 }
-            });
+            }).then(r=>r.json())
+                    .then(user=>console.log(user));
         } catch (error) {
             console.error(error);
         }
