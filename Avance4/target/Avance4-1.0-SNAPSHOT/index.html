@@ -33,22 +33,22 @@ and open the template in the editor.
                         <h4>Jesus Alfonso Arce Sempoalt - 00000189029</h4>
                         <h4>Bryan Isaac Segoviano Ruiz - 00000186203</h4>
                     </hgroup>
-                    
+
                     <hr>
                     <div class="datosInicio">
-                        <form action="IniciarSesion" method="POST">
+                        <form id="form">
                             <label><b>Usuario:</b></label>
-                            <input class="cajaTexto" type="text" name="txtcorreo" placeholder="Introduzca su correo electronico" id="as" required>
+                            <input class="cajaTexto" type="text" name="txtcorreo" placeholder="Introduzca su correo electronico" id="correo" required>
                             <label><b>Contraseña:</b></label>
-                            <input class="cajaTexto" type="password" name="txtpassword" placeholder="Introduzca su contraseña" required>
-                            <input type="submit" class="botonIngresar" value="Ingresar"/>
+                            <input class="cajaTexto" type="password" name="txtpassword" placeholder="Introduzca su contraseña" id="contrasenia" required>
+                            <input type="submit" class="botonIngresar" id="iniciarSesionBtn" value="Ingresar"/>
                         </form>
                     </div>
                     <a href="crear_cuenta.html"><input type="button" class="botonCrear" value="Crear nueva cuenta"></a>
                 </section>
             </div>
         </main>
-        <script src="js/prueba.js" type="text/javascript"></script>
+        <script src="js/iniciarSesion.js" type="text/javascript"></script>
     </body>
 
 </html>
