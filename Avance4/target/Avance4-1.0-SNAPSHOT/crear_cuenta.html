@@ -18,25 +18,25 @@ and open the template in the editor.
                     nueva</label>
             </header>
             <section>
-                <form action="CrearCuenta" method="POST" id="formulario_registro" class="registro" enctype="multipart/form-data">
+                <form  id="formulario_registro" class="registro" enctype="multipart/form-data">
                     <div class="nombre">
                         <input type="text" placeholder="Nombre" required id="registro_nombre" name="nombre">
                         <input type="text" placeholder="Apellidos" required id="registro_apellidos" name="apellido">
                     </div>
                     <p></p>
                     <label class="sexo">Hombre </label> 
-                    <input type="radio" name="genero" checked id="checkboxH" value="HOMBRE">
+                    <input type="radio" name="genero" checked id="checkboxH" class="genero" value="HOMBRE">
                     <label class="sexo"> Mujer</label>
-                    <input type="radio" name="genero" id="checkboxM" value="MUJER">
+                    <input type="radio" name="genero" id="checkboxM" class="genero" value="MUJER">
                     <p></p>
-                    <label >Telefono:</label><input type="tel" required name="telefono">
+                    <label >Telefono:</label><input type="tel" id="telefono" required name="telefono">
                     <p></p>
                     <label>Fecha de nacimiento: </label>
-                    <input type="date" name="fechaNacimiento" required/>
+                    <input type="date" name="fechaNacimiento"  id="fechaNacimiento" required/>
                     <p></p>
                     
                     <label>Avatar:</label>
-                    <input type="file" name="avatar" accept="image/*"/>
+                    <input type="file" name="avatar"  id="avatar" accept="image/*"/>
                     <p></p>
                     <div class="label_ubicacion">
                         <label for="estado">Estado: </label>
@@ -46,7 +46,6 @@ and open the template in the editor.
                             <option value="Chihuahua">Chihuahua </option>
                             <option value="Baja California">Baja California </option>
                         </select>
-
                     </div>
                     <div>
                         <label>Municipio: </label>
@@ -70,6 +69,7 @@ and open the template in the editor.
                 </form>
             </section>
         </main>
-        <script src="handleOnChange.js"></script>
+        <script src="js/handleOnChange.js"></script>
+        <script src="js/crearCuenta.js"></script>
     </body>
 </html>

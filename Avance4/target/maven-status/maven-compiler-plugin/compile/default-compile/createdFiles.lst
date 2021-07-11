@@ -1,4 +1,5 @@
 com\utils\CargarImagen.class
+com\utils\OperacionesJson.class
 com\servlets\CerrarSesion.class
 com\servlets\CrearCuenta.class
 com\servlets\IniciarSesion.class

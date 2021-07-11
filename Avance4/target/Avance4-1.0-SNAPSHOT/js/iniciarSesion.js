@@ -5,25 +5,25 @@ const iniciarSesion = async () => {
         correo: correo,
         password: contrasenia
     };
-
-    console.log(JSON.stringify(data));
-
     if (correo !== '' && contrasenia !== '') {
         try {
-            let response = await fetch("IniciarSesion", {
+            const response = await fetch("IniciarSesion", {
                 method: 'POST',
                 body: JSON.stringify(data), // data can be `string` or {object}!
                 headers: {
                     'Content-Type': 'application/json; charset=UTF-8'
                 }
-            }).then(r=>r.json())
-                    .then(user=>console.log(user));
+            });
+            const user = await response.json();
+            if (user.valido === 1) {
+                window.location.href = "postNormal.html";
+            } else {
+                alert("Usuario invalido");
+            }
         } catch (error) {
             console.error(error);
         }
     }
-
-    // window.location.href = "postNormal.html";
 };
 
 
@@ -37,29 +37,3 @@ window.onload = () => {
     formulario.onsubmit = handleOnSubmit;
     button.onclick = iniciarSesion;
 };
-/*
- async function iniciarSesion(name, password) {
- try {
- let data = {name: name,
- password: password};
- console
- let res = await fetch("http://localhost:8888/usuario/validar", {
- method: 'POST',
- body: JSON.stringify(data), // data can be `string` or {object}!
- headers: {
- 'Content-Type': 'application/json; charset=UTF-8'
- }
- })
- 
- .then((res) => res.json()).then(json => {
- tkn = JSON.stringify(json);
- console.log(tkn)
- });
- ;
- 
- } catch (error) {
- console.log(error);
- }
- }
- reportesMaterials();
- */

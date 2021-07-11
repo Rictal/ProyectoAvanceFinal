@@ -1,5 +1,7 @@
 package com.servlets;
 
+import com.google.gson.JsonObject;
+import com.utils.OperacionesJson;
 import controles.FabricaFachadaControl;
 import controles.IFachada;
 import dominio.Admor;
@@ -7,6 +9,8 @@ import dominio.Municipio;
 import dominio.Normal;
 import dominio.Usuario;
 import dominio.enums.Genero;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -20,6 +24,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 import org.apache.commons.io.IOUtils;
 
 @MultipartConfig
@@ -27,89 +32,64 @@ public class CrearCuenta extends HttpServlet {
 
     private final IFachada fachada = FabricaFachadaControl.getInstance();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CrearCuenta</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CrearCuenta at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String genero = request.getParameter("genero");
-        String telefono = request.getParameter("telefono");
-        String fechaNacimiento = request.getParameter("fechaNacimiento");
-        String municipio = request.getParameter("municipio");
-        String correo = request.getParameter("correoElectronico");
-        String contrasenia = request.getParameter("contrasenia");
-        
-        Part avatar = request.getPart("avatar");
-        
-        byte[] avatarConvertido = imagenConvertida(avatar);
-        System.out.println(avatarConvertido);
-        
+
+        response.setContentType("application/json;charset=UTF-8");
+        BufferedReader br = request.getReader();
+
+        String json = OperacionesJson.obtenerJson(br);
+        JsonObject usuarioJson = OperacionesJson.stringToJson(json);
         PrintWriter out = response.getWriter();
+
+
+        String nombre = usuarioJson.get("nombre").getAsString() + " " + usuarioJson.get("apellido").getAsString();
+        String genero = usuarioJson.get("genero").getAsString();
+        String telefono = usuarioJson.get("telefono").getAsString();
+        String fechaNacimiento = usuarioJson.get("fechaNacimiento").getAsString();
+        String municipio = usuarioJson.get("municipio").getAsString();
+        String correo = usuarioJson.get("correoElectronico").getAsString();
+        String contrasenia = usuarioJson.get("contrasenia").getAsString();
+
         Genero generoEnum = getGeneroEnum(genero);
         Date fechaConvertida = FechaConvertida(fechaNacimiento);
         Municipio municipioConvertido = getMunicipio(municipio);
-        
+
         boolean existenciaCorreo = verificarCorreo(correo);
+
         if (existenciaCorreo) {
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Correo ya existente');");
-            out.println("location='crear_cuenta.jsp'");
-            out.println("</script>");
+            usuarioJson.addProperty("valido", 0);
         } else {
-            Usuario nuevoUsuario = new Normal(nombre + " " + apellido,
+            Usuario nuevoUsuario = new Normal(nombre,
                     correo,
                     contrasenia,
                     telefono,
                     municipioConvertido,
                     fechaConvertida,
                     generoEnum);
-            nuevoUsuario.setAvatar(avatarConvertido);
-            
             fachada.guardarNormal((Normal) nuevoUsuario);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            usuarioJson.addProperty("valido", 1);
         }
-        //request.getRequestDispatcher("crear_cuenta.jsp").forward(request, response);
+        System.out.println(usuarioJson.toString());
+        out.println(usuarioJson.toString());
+        out.flush();
+
     }
 
     /**
