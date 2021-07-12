@@ -12,6 +12,10 @@
         <servlet-name>CerrarSesion</servlet-name>
         <servlet-class>com.servlets.CerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargarPublicacion</servlet-name>
+        <servlet-class>com.servlets.CargarPublicacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrearCuenta</servlet-name>
         <url-pattern>/CrearCuenta</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargarPublicacion</servlet-name>
+        <url-pattern>/CargarPublicacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -54,6 +54,13 @@ public class Post implements Serializable {
     public Post() {
     }
 
+    public Post(Long id, Date fechaHoraCreacion, String titulo, String contenido) {
+        this.id = id;
+        this.fechaHoraCreacion = fechaHoraCreacion;
+        this.titulo = titulo;
+        this.contenido = contenido;
+    }
+
     public Post(Date fechaHoraCreacion, String titulo, String contenido, Date fechaHoraEdicion) {
         this.fechaHoraCreacion = fechaHoraCreacion;
         this.titulo = titulo;

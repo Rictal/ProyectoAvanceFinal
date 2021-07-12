@@ -28,7 +28,6 @@ const getDatos = () => {
         correoElectronico: correoElectronico,
         contrasenia: contrasenia
     }
-
     return data;
 };
 
@@ -54,9 +53,9 @@ const crearCuenta = () => {
     const data = getDatos();
     peticion(data);
     const correoElectronico = document.getElementById("registro_correo");
-    correoElectronico.value="";
+    correoElectronico.value = "";
     const contrasenia = document.getElementById("registro_contra");
-    contrasenia.value="";
+    contrasenia.value = "";
 };
 
 

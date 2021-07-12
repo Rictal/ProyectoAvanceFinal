@@ -17,11 +17,6 @@
     <dependencies>
         <dependency>
             <groupId>appsweb</groupId>
-            <artifactId>accesoDatos</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>appsweb</groupId>
             <artifactId>dominio</artifactId>
             <version>1.0</version>
         </dependency>
