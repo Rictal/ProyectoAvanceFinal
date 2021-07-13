@@ -1,5 +1,9 @@
 package TestDAO;
 
+import dominio.Usuario;
+import dominio.enums.TiposUsuarios;
+import dominio.fabricas.FabricaUsuario;
+
 public class Test {
 
     public static void main(String[] args) {

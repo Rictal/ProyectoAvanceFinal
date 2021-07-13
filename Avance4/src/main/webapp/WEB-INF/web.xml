@@ -16,6 +16,14 @@
         <servlet-name>CargarPublicacion</servlet-name>
         <servlet-class>com.servlets.CargarPublicacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>crearPublicacion</servlet-name>
+        <servlet-class>com.servlets.crearPublicacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarPublicacion</servlet-name>
+        <servlet-class>com.servlets.EliminarPublicacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrearCuenta</servlet-name>
         <url-pattern>/CrearCuenta</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>CargarPublicacion</servlet-name>
         <url-pattern>/CargarPublicacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>crearPublicacion</servlet-name>
+        <url-pattern>/crearPublicacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarPublicacion</servlet-name>
+        <url-pattern>/EliminarPublicacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -2,15 +2,15 @@ package com.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.utils.ListaPublicaciones;
 import com.utils.UsuarioDTO;
+import dominio.Admor;
 import dominio.Post;
 import dominio.Usuario;
 import dominio.Normal;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,23 +21,34 @@ import javax.servlet.http.HttpSession;
 
 public class CargarPublicacion extends HttpServlet {
 
-    private List<Post> listaPublicacion = new ArrayList<>();
+    private ListaPublicaciones publicaciones = new ListaPublicaciones();
     private Gson gson = new Gson();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         JsonObject usuarioJson = new JsonObject();
+        List<Post> listaPublicacion = (List<Post>) request.getSession().getAttribute("listaPublicaciones");
+        System.out.println(listaPublicacion);
+        if(listaPublicacion==null){
+            listaPublicacion = publicaciones.getListaPublicacion();
+        }
         //usuario de la sesion
-        Usuario usuario = (Normal) session.getAttribute("normal");
+        Usuario usuario=null;
+        if (this.verificarUsuarioAdmin(request.getSession().getAttribute("admin"))) {
+            usuario = (Admor) request.getSession().getAttribute("admin");
+        } else {
+            usuario = (Normal) request.getSession().getAttribute("normal");
+        }
+
         usuarioJson.add("usuario", gson.toJsonTree(this.conversionUsuario(usuario)));
         //lista de posts
-        this.cargarLista();
         usuarioJson.add("listaPosts", gson.toJsonTree(listaPublicacion));
-        System.out.println(usuarioJson);
+        session.setAttribute("listaPublicaciones", listaPublicacion);
         //envio de datos
         out.println(usuarioJson.toString());
         out.flush();
@@ -48,14 +59,6 @@ public class CargarPublicacion extends HttpServlet {
             throws ServletException, IOException {
     }
 
-    private void cargarLista() {
-        this.listaPublicacion.removeAll(this.listaPublicacion);
-        this.listaPublicacion.add(new Post(1L, new Date(), "Pochito 'el travieso' Arce", "Hola muy buenas a todos guapisímos, aquí vegueta 777 en directo en minecraft, desde mundo vegueta😊😊😊😊"));
-        this.listaPublicacion.add(new Post(2L, new Date(), "Justin B", "buenas tardes mi nombre es Justin biber y me comunico con el fin de evaluar el servicio que usted recibe"));
-        this.listaPublicacion.add(new Post(3L, new Date(), "McGregor", "me lastime la pierna en mi ultima pelea"));
-        this.listaPublicacion.add(new Post(4L, new Date(), "Gabe Newell", "half life 4"));
-        this.listaPublicacion.add(new Post(4L, new Date(), "Romana Garcia", "pokemon go"));
-    }
 
     private UsuarioDTO conversionUsuario(Usuario usuario) {
         boolean admin = true;
@@ -64,6 +67,14 @@ public class CargarPublicacion extends HttpServlet {
         }
         UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.getNombreCompleto(), usuario.getIdusuario().intValue(), admin);
         return usuarioDTO;
+    }
+
+    private boolean verificarUsuarioAdmin(Object usuario) {
+        boolean admin = false;
+        if (usuario instanceof Admor) {
+            admin = true;
+        }
+        return admin;
     }
 
 }

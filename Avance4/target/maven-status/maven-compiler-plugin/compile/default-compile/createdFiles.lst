@@ -1,6 +1,9 @@
 com\utils\CargarImagen.class
 com\utils\UsuarioDTO.class
+com\servlets\EliminarPublicacion.class
 com\servlets\CrearCuenta.class
+com\utils\ListaPublicaciones.class
+com\servlets\crearPublicacion.class
 com\servlets\CargarPublicacion.class
 com\utils\OperacionesJson.class
 com\servlets\CerrarSesion.class

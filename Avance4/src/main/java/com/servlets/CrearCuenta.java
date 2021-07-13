@@ -86,7 +86,7 @@ public class CrearCuenta extends HttpServlet {
             fachada.guardarNormal((Normal) nuevoUsuario);
             usuarioJson.addProperty("valido", 1);
         }
-        System.out.println(usuarioJson.toString());
+
         out.println(usuarioJson.toString());
         out.flush();
 

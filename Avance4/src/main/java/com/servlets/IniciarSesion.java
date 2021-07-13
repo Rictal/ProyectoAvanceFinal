@@ -38,7 +38,7 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //operaciones del json
         response.setContentType("application/json;charset=UTF-8");
         BufferedReader br = request.getReader();
         PrintWriter out = response.getWriter();
