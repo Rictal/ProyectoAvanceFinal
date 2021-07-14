@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.utils.ListaPublicaciones;
 import com.utils.OperacionesJson;
+import com.utils.UsuarioDTO;
+import dominio.Admor;
 import dominio.Normal;
 import dominio.Post;
 import dominio.Usuario;
@@ -45,8 +47,13 @@ public class crearPublicacion extends HttpServlet {
         String json = OperacionesJson.obtenerJson(br);
         JsonObject postJson = OperacionesJson.stringToJson(json);
 
-        Usuario usuarioNormal = (Normal) session.getAttribute("normal");
-        String titulo = usuarioNormal.getNombreCompleto();
+        Usuario usuario=null;
+        if (this.verificarUsuarioAdmin(request.getSession().getAttribute("admin"))) {
+            usuario = (Admor) request.getSession().getAttribute("admin");
+        } else {
+            usuario = (Normal) request.getSession().getAttribute("normal");
+        }
+        String titulo = usuario.getNombreCompleto();
         String contenido = postJson.get("contenido").getAsString();
         long id = 1;
         if (!listaPublicacion.isEmpty()) {
@@ -57,15 +64,12 @@ public class crearPublicacion extends HttpServlet {
         session.setAttribute("listaPublicaciones", listaPublicacion);
     }
 
-    private Date FechaConvertida(String fechaNacimiento) {
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaNacimientoConvertida = null;
-        try {
-            fechaNacimientoConvertida = formatoFecha.parse(fechaNacimiento);
-        } catch (ParseException ex) {
-            System.out.println(ex);
+    private boolean verificarUsuarioAdmin(Object usuario) {
+        boolean admin = false;
+        if (usuario instanceof Admor) {
+            admin = true;
         }
-        return fechaNacimientoConvertida;
+        return admin;
     }
 
 }

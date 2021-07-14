@@ -22,8 +22,8 @@ const cargarPublicaciones = (usuario, listaPosts) => {
     const posts = document.getElementById("posts");
     console.log(usuario);
     console.log(listaPosts);
-    posts.innerHTML='';
-    posts.innerHTML=`
+    posts.innerHTML = '';
+    posts.innerHTML = `
          <header>
             <h2>Posts</h2>
         </header>`;
@@ -59,7 +59,7 @@ const eliminarPost = async (id) => {
         });
         //carga las publicaciones de nuevo
         peticionPublicaciones()
-            .then(({ usuario, listaPosts }) => {
+            .then(({usuario, listaPosts}) => {
                 cargarPublicaciones(usuario, listaPosts);
                 establerNombreUsuario(usuario);
             });
@@ -68,15 +68,7 @@ const eliminarPost = async (id) => {
 
 
 const validaUsuario = (usuario, post) => {
-    if (usuario.nombre === post.titulo) {
-        return `
-            <a href="publicar.html">
-                <input type="button" 
-                       value="Editar"
-                       class="editar" />
-            </a>
-        `
-    } else if (usuario.admin === true) {
+    if (usuario.admin === true) {
         return `
                 <input type="button" 
                        value="Eliminar"
@@ -85,6 +77,14 @@ const validaUsuario = (usuario, post) => {
                        onclick="eliminarPost(this.id)"
                        />          
                 `
+    } else if (usuario.nombre === post.titulo) {
+        return `
+            <a href="publicar.html">
+                <input type="button" 
+                       value="Editar"
+                       class="editar" />
+            </a>
+        `
     }
     return '';
 }
